@@ -1,12 +1,18 @@
-import './App.css';
-import Date from './components/date';
+import React, { Component } from "react";
+import Sidebar2 from "./components/sidebar.js";
+import Header from "./components/header.js";
+ 
+import "./App.css";
 
-function App() {
+class App extends Component {
+  render() {
     return (
-        <div className = "App" >
-            <Date> </Date>
+        <div className="App">
+            <Header></Header>
+            <Sidebar2></Sidebar2>
         </div>
     );
+  }
 }
-
+ 
 export default App;
