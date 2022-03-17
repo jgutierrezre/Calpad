@@ -11,7 +11,11 @@ class App extends Component {
         <div className="App">
             <Header></Header>
             <Test></Test>
-            <Link to="/login">Login</Link>
+            <Link to="/login">
+              <button>
+                Login
+              </button>
+            </Link>
         </div>
     );
   }
