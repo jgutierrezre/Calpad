@@ -1,19 +1,43 @@
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import React, { Component } from "react";
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 
-import Home from './pages/Home'
 import Login from './pages/Login'
 import Secret from './pages/Secret'
 
-function App() {
+import "./App.css";
+import Sidebar from './components/Sidebar';
+import Main from './components/Main';
+
+class App extends Component {
+
+	render() {
+		return (
+			<div className='App'>
+				<BrowserRouter>
+					<Routes>
+						<Route path='/' element={<IsLogged/>}>
+							<Route path='/' element={<Default/>}/>
+						</Route>
+						<Route path='/login' element={<Login/>}/>
+					</Routes>
+				</BrowserRouter>
+			</div>
+		);
+	}
+}
+
+const IsLogged = () => {
+    const auth = true;
+    return auth ? <Outlet/> : <Navigate to="/login"/>;
+}
+
+const Default = () => {
 	return (
-		<BrowserRouter>
-		<Routes>
-			<Route path='/' element={<Home/>} />
-			<Route path='/login' element={<Login/>} />
-			<Route path='/secret' element={<Secret/>} />
-		</Routes>
-		</BrowserRouter>
-	);
+		<>
+			<Sidebar/>
+			<Main/>
+		</>
+	)
 }
 
 export default App;
